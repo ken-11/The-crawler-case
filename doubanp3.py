@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding=utf-8 -*-
 import urllib
 from urllib import request
@@ -79,25 +79,6 @@ def save_file(text, filename):  #保存最终的电影数据
     f.write(text.encode())
     f.close()
 
-##def CrawlInfo(i):
-##    url = 'https://www.douban.com/doulist/3516235/?start='+str(i)+'&sort=seq&sub_type='
-##    # 获取当前这个页面的html信息
-##    html = get_html(url)
-##    # 获取电影的整体信息,这里的list信息正常的长度是25个
-##    movie_list = get_movie_all(html)
-##    #将每一个div中把每个电影信息提取出来
-##    get_movie_one(movie_list[0])
-##    for movie in movie_list:
-##        result = get_movie_one(movie) # reuslt list
-##        #print(result)
-##        # 把获取的电影信息格式化，得到需要存储到文件中的信息
-##        text = '\t'+'电影名：'+str(result[0])+' | 评分：'+str(result[1])+' | '+str(result[2])+'\n'
-##        # 把电影信息存到文件中
-##        save_file(text,'豆瓣电影2016.txt')
-##        # 每隔1-5秒抓取一页的信息
-##        minSecond = 1
-##        maxSecond = 5
-##        time.sleep(random.randint(minSecond,maxSecond))
 
 def CrawlInfo(url, q):
     # 获取当前这个页面的html信息
@@ -105,21 +86,7 @@ def CrawlInfo(url, q):
     # 获取电影的整体信息,这里的list信息正常的长度是25个
     movie_list = get_movie_all(html)
     print(movie_list)
-    #将每一个div中把每个电影信息提取出来
-    # get_movie_one(movie_list[0])
-    # for movie in movie_list:
-    #     result = get_movie_one(movie) # reuslt list
-    #     #print(result)
-    #     # 把获取的电影信息格式化，得到需要存储到文件中的信息
-    #     text = '\t'+'电影名：'+str(result[0])+' | 评分：'+str(result[1])+' | '+str(result[2])+'\n'
-    #     # 把电影信息存到文件中
-    #     save_file(text,'豆瓣电影2016.txt')
-    #     # 每隔1-5秒抓取一页的信息
-    #     minSecond = 1
-    #     maxSecond = 5
-    #     time.sleep(random.randint(minSecond,maxSecond))
-    # # 完成了当前url的抓取之后，put到队列中去
-    # q.put(url)
+ 
         
 if __name__=='__main__':
     # 创建进程池和进程池队列来完成抓取
@@ -160,15 +127,5 @@ if __name__=='__main__':
     pool.close()
     pool.join()
       
-##    # 避免magic number
-##    startPage = 0
-##    endPage = 426
-##    step = 25
-##    
-##    # 用进程池把18个页面以一种兄弟关系来抓取
-##    pool = Pool()
-##    pool.map(CrawlInfo, [i for i in range(startPage,endPage,step)])
-##    pool.close()
-##    pool.join()
     
              
